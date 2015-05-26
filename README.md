@@ -12,7 +12,7 @@ $ redis-server
 Build the go file:
 
 ```
-$ go-build
+$ go build
 ```
 
 Run your worker:
@@ -21,8 +21,14 @@ Run your worker:
 $ ./worker -queues=mail
 ```
 
-You can test with redis command line:
+And inside the ruby app make:
+```
+$ bundle install
+$ ruby mailer.rb
+```
+
+Or also you can test with redis command line:
 
 ```
-$ redis-cli -r 10 RPUSH resque:queue:mail '{"class":"Mailer","args":[]}'
+$ redis-cli -r 1 RPUSH resque:queue:mail '{"class":"Mailer","args":["sender@gmail.com","receiver@outlook.com"]}'
 ```
