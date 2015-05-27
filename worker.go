@@ -1,24 +1,24 @@
 package main
 
 import (
-	"fmt"
+    "fmt"
     "bytes"
     "html/template"
-	"github.com/benmanns/goworker"
+    "github.com/benmanns/goworker"
     "gopkg.in/gomail.v1"
 )
 
 var doc bytes.Buffer
 
 type SmtpSettings struct {
-    Email    string
+    Email       string
     Password    string
-    Server string
+    Server      string
     Port        int
 }
 
 func init() {
-	goworker.Register("Mailer", MailWorker)
+    goworker.Register("Mailer", MailWorker)
 }
 
 func MailWorker(queue string, args ...interface{}) error {
@@ -39,8 +39,8 @@ func MailWorker(queue string, args ...interface{}) error {
     if err := mailer.Send(msg); err != nil {
         panic(err)
     }
-	fmt.Println("Email was sent!")
-	return nil
+    fmt.Println("Email was sent!")
+    return nil
 }
 
 func main(){
