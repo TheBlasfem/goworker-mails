@@ -3,7 +3,7 @@ require 'resque'
 class Mailer
   def self.get_args
     #complex operation
-    ['sender@gmail.com', 'receiver@outlook.com']
+    ['receiver@outlook.com', 'Julio']
   end
 end
 
